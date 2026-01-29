@@ -22,7 +22,6 @@ This repository primarily documents:
 - Scalability strategy
 - Technology trade-offs
 
-> **Note:** This is a design documentation repository, not an implementation repository.
 
 ---
 
