@@ -100,13 +100,6 @@ The system follows a **microservices architecture** optimized for **low latency*
 
 ---
 
-## Documentation
-
-- Full system design, component breakdowns, trade-off analysis, and architecture diagrams are included in the uploaded **PDF**
-- This README provides a **high-level summary**
-
----
-
 ## Intended Audience
 
 This project is intended for:
