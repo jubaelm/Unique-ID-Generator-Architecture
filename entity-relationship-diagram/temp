@@ -1,1 +1,54 @@
-temp
+``` Data Design
+
+client [icon: user, color: lightblue] {
+  client_id UUID pk
+  name VARCHAR
+  email VARCHAR
+  status ENUM(active, suspended)
+  created_at DATE
+}
+
+api_key [icon: key, color: yellow] {
+  api_key_id UUID (PK)
+  namespace_id UUID  (FK)
+  api_key_hash VARCHAR
+  status ENUM(active, revoked)
+  created_at TIMESTAMP
+}
+
+namespace [icon: globe, color: green] {
+  namespace_id UUID pk
+  client_id UUID
+  name VARCHAR
+  status ENUM(active, deprecated)
+  created_at TIMESTAMP
+}
+
+machine [icon: cpu, color: red] {
+  machine_id INT pk
+  client_id UUID (FK)
+  assigned_at TIMESTAMP
+  status ENUM(active, retired)
+}
+
+rate_limit_policy [icon: zap, color: purple] {
+  policy_id pk
+  namespace_id UUID (FK)
+  requests_per_second INT
+  created_at TIMESTAMP
+}
+
+logging [icon: file-text, color: orange] {
+  log_id UUID (PK)
+  client_id UUID
+  namespace_id UUID (FK)
+  generated_id UUID
+  logged_at TIMESTAMP
+}
+
+api_key.namespace_id > namespace.namespace_id
+namespace.client_id > client.client_id
+machine.client_id > client.client_id
+rate_limit_policy.namespace_id > namespace.namespace_id
+logging.client_id > client.client_id
+logging.namespace_id > namespace.namespace_idtemp
